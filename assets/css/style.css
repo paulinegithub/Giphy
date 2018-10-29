@@ -13,7 +13,11 @@ header {
 
 img {
     height: 200px;
-    /* width: 150px; */
+}
+
+.gifDiv:hover {
+    opacity: 0.65;
+    filter: alpha(opacity=65);
 }
 
 .gifDiv {
@@ -48,7 +52,6 @@ input {
 
 /* Desktop Width at 980px and below */
 @media screen and (max-width: 980px) {
-
     .wrapper {
         padding-left: 20px;
         padding-right: 20px;
@@ -58,8 +61,6 @@ input {
 
 /* Tablet Width at 768px and below */
 @media screen and (max-width: 768px) {
-
-    /* add padding for nav bar doesn't overflow */
     .wrapper {
         padding-left: 20px;
         padding-right: 20px;
@@ -68,7 +69,6 @@ input {
 
 /* Phone Width at 640px and below */
 @media screen and (max-width: 640px) {
-
     .wrapper,
     .form-control {
         width: 100%;
@@ -78,7 +78,6 @@ input {
         padding: 5px;
     }
 
-    /* expand width to one portfolio item per row */
     img {
         width: 100%;
         height: 100%;
