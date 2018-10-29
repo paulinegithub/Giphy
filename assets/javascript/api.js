@@ -1,14 +1,14 @@
 $(document).ready(function () {
 
     var apiKey = "6EHAvzMk5Bk0Zj41x8HzMkgn6z5VfL4c";
-    var topics = ["cat", "dog", "funny", "random", "cute", "bunny", "kawaii"];
+    var topics = ["cat", "dog", "random", "cute", "kawaii"];
     var topicName;
 
     // function to generate buttons based on topics array
     function generateButtons() {
         for (let i = 0; i < topics.length; i++) {
-            var newButton = $("<button>");
-            newButton.addClass("btn btn-light gifButton");
+            let newButton = $("<button>");
+            newButton.addClass("btn btn-info gifButton");
             newButton.attr("data-name", topics[i]);
             newButton.text(topics[i]);
             $("#choose-gif").append(newButton);
@@ -23,11 +23,13 @@ $(document).ready(function () {
     $("#enter-topic").on("click", function (event) {
         event.preventDefault();
 
-        var newTopic = $("#userTopic").val().trim();
+        let newTopic = $("#userTopic").val().trim();
         console.log("new topic: " + newTopic);
-        topics.push(newTopic);
 
-        updateButtons();
+        if (newTopic != "") {
+            topics.push(newTopic);
+            updateButtons();
+        }
     });
 
     // function remake button array
@@ -79,9 +81,11 @@ $(document).ready(function () {
 
                     // Creating and storing a div tag
                     var gifDiv = $("<div>");
+                    gifDiv.addClass("gifDiv");
 
                     // Creating a paragraph tag with the result item's rating
-                    var p = $("<p>").text("Rating: " + results[i].rating);
+                    var p = $("<p>").text(results[i].title);
+                    p.append("<BR>Rating: " + results[i].rating);
 
                     // Creating and storing an image tag
                     var gifImage = $("<img>");

@@ -21,26 +21,40 @@
 <body>
 
     <div class="wrapper">
-        <!-- user instructions -->
-        <div id="main">
+        <header>
+            Giphy
+        </header>
 
+        <!-- user instructions -->
+        <div id="instructions" class="main">
+            Hi! Do you like gifs? Click on a button to see 10 gifs from that topic.
+            <BR>Be sure to click on the gif to play it and again to pause it.
         </div>
 
         <!-- populate buttons based on topics array in js -->
-        <div id="choose-gif"></div>
+        <div id="choose-gif" class="main"></div>
 
         <!-- form to add new topic -->
-        <div id="add-topic">
+        <div id="add-topic" class="main">
             <form>
-                <label for="gif-search">Add a topic:</label>
+                <!-- <label for="gif-search">Add a topic:</label> -->
+                Not seeing what you like? Enter a topic you like to add to the button list!
+
+                <!-- enter topic -->
                 <input class="form-control" type="text" id="userTopic">
-                <input value="Give me gifs!" type="submit" id="enter-topic">
-                <input value="Reset" type="submit" id="reset">
+
+                <!-- submit -->
+                <input class="form-btn btn btn-primary mb-2" value="Give me gifs!" type="submit" id="enter-topic">
+
+                <!-- reset -->
+                <input class="form-btn btn btn-danger mb-2" value="Reset" type="submit" id="reset">
+
             </form>
+
         </div>
 
         <!-- gifs populated by selection chosen -->
-        <div id="gifs-appear-here"></div>
+        <div id="gifs-appear-here" class="main"></div>
 
     </div>
 
