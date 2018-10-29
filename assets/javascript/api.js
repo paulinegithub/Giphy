@@ -1,21 +1,19 @@
 $(document).ready(function () {
 
-    // var apiKey = "6EHAvzMk5Bk0Zj41x8HzMkgn6z5VfL4c";
-    var apiKey = "dc6zaTOxFJmzC";
+    var apiKey = "6EHAvzMk5Bk0Zj41x8HzMkgn6z5VfL4c";
     var topics = ["cat", "dog", "funny", "random", "cute", "bunny", "kawaii"];
     var topicName;
-    var newButton;
 
     // function to generate buttons based on topics array
     function generateButtons() {
         for (let i = 0; i < topics.length; i++) {
-            newButton = $("<button>");
+            var newButton = $("<button>");
             newButton.addClass("btn btn-light gifButton");
             newButton.attr("data-name", topics[i]);
             newButton.text(topics[i]);
             $("#choose-gif").append(newButton);
         }
-        console.log("genButton topics: " + topics);
+        console.log("current gif topics: " + topics);
     }
 
     // generate buttons based on initial topics array
@@ -26,27 +24,34 @@ $(document).ready(function () {
         event.preventDefault();
 
         var newTopic = $("#userTopic").val().trim();
-        console.log(newTopic);
+        console.log("new topic: " + newTopic);
         topics.push(newTopic);
 
         updateButtons();
-    })
+    });
 
     // function remake button array
     function updateButtons() {
         $("#choose-gif").empty();
-        console.log("update Button topics: " + topics);
+        console.log("updated gif topics: " + topics);
         generateButtons();
     }
 
+    // reset on click instead of refreshing page
+    $("#reset").on("click", function (event) {
+        topics = ["cat", "dog", "funny", "random", "cute", "bunny", "kawaii"];
+        console.log("topics reset: " + topics);
+        updateButtons();
 
-    // on click of a topic button, spawn gifs
-    // $("button").on("click", function () {
+        $("#gifs-appear-here").empty();
+    });
+
+    // on click of a gif topic button, spawn gifs
     $(document).on("click", ".gifButton", function () {
         // Grabbing and storing the data-name property value from the button
         topicName = $(this).data("name");
         getGifs(topicName);
-        console.log( + " clicked")
+        console.log(topicName + " clicked");
     });
 
 
@@ -80,11 +85,12 @@ $(document).ready(function () {
 
                     // Creating and storing an image tag
                     var gifImage = $("<img>");
-                    // Setting the src attribute of the image to a property pulled off the result item
+                    // initial source and animation state (still)
                     gifImage.attr("src", results[i].images.fixed_height_still.url);
-                    gifImage.attr("data-state", "still"); //animate by default
+                    gifImage.attr("data-state", "still");
                     gifImage.addClass("gifShown");
 
+                    // setting up animation states for toggling later
                     gifImage.attr("data-still", results[i].images.fixed_height_still.url);
                     gifImage.attr("data-animate", results[i].images.fixed_height.url);
 
@@ -101,15 +107,15 @@ $(document).ready(function () {
 
     //  toggle between still and animate for gifs shown
     $(document).on("click", ".gifShown", function () {
-        // The attr jQuery method allows us to get or set the value of any attribute on our HTML element
+        // find current animation state
         var state = $(this).attr("data-state");
-        // If the clicked image's state is still, update its src attribute to what its data-animate value is.
-        // Then, set the image's data-state to animate
-        // Else set src to the data-still value
+        // change from still to animated when clicked
         if (state === "still") {
             $(this).attr("src", $(this).attr("data-animate"));
             $(this).attr("data-state", "animate");
-        } else {
+        }
+        // change from animated to still when clicked
+        else {
             $(this).attr("src", $(this).attr("data-still"));
             $(this).attr("data-state", "still");
         }

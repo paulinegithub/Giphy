@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
         crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 
     <!-- js files -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -20,23 +21,26 @@
 <body>
 
     <div class="wrapper">
+        <!-- user instructions -->
+        <div id="main">
 
-        <div id="choose-gif">
-            <!-- populate buttons based on topics array in js -->
         </div>
 
+        <!-- populate buttons based on topics array in js -->
+        <div id="choose-gif"></div>
+
+        <!-- form to add new topic -->
         <div id="add-topic">
             <form>
                 <label for="gif-search">Add a topic:</label>
                 <input class="form-control" type="text" id="userTopic">
                 <input value="Give me gifs!" type="submit" id="enter-topic">
-                
+                <input value="Reset" type="submit" id="reset">
             </form>
         </div>
 
-        <div id="gifs-appear-here">
-            <!-- populated by selection chosen -->
-        </div>
+        <!-- gifs populated by selection chosen -->
+        <div id="gifs-appear-here"></div>
 
     </div>
 
