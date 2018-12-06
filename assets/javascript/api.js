@@ -76,6 +76,9 @@ $(document).ready(function () {
                 // storing the data from the AJAX request in the results variable
                 var results = response.data;
 
+                // clear old gifs
+                $("#gifs-appear-here").empty();
+
                 // Looping through each result item
                 for (var i = 0; i < results.length; i++) {
 
